@@ -1,0 +1,318 @@
+
+> sonara-web@0.1.0 lint
+> eslint
+
+
+E:\SONARA Fertig!\sonara-web\src\app\admin\earnings\page.tsx
+  74:6   error  Compilation Skipped: Existing memoization could not be preserved
+
+React Compiler has skipped optimizing this component because the existing manual memoization could not be preserved. This dependency may be mutated later, which could cause the value to change unexpectedly.
+
+E:\SONARA Fertig!\sonara-web\src\app\admin\earnings\page.tsx:74:6
+  72 |   const topArtists = useMemo(
+  73 |     () => (earnings?.topArtists ?? []).slice(0, 12),
+> 74 |     [earnings?.topArtists],
+     |      ^^^^^^^^ This dependency may be modified later
+  75 |   );
+  76 |
+  77 |   const payouts = useMemo(                                                                                                                                                             react-hooks/preserve-manual-memoization
+  77:19  error  Compilation Skipped: Existing memoization could not be preserved
+
+React Compiler has skipped optimizing this component because the existing manual memoization could not be preserved. This value was memoized in source but not in compilation output.
+
+E:\SONARA Fertig!\sonara-web\src\app\admin\earnings\page.tsx:77:19
+  75 |   );
+  76 |
+> 77 |   const payouts = useMemo(
+     |                   ^^^^^^^^
+> 78 |     () => (earnings?.payouts ?? []).slice(0, 100),
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 79 |     [earnings?.payouts],
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 80 |   );
+     | ^^^^ Could not preserve existing memoization
+  81 |
+  82 |   const artistChartData = useMemo(
+  83 |     () =>  react-hooks/preserve-manual-memoization
+  79:6   error  Compilation Skipped: Existing memoization could not be preserved
+
+React Compiler has skipped optimizing this component because the existing manual memoization could not be preserved. This dependency may be mutated later, which could cause the value to change unexpectedly.
+
+E:\SONARA Fertig!\sonara-web\src\app\admin\earnings\page.tsx:79:6
+  77 |   const payouts = useMemo(
+  78 |     () => (earnings?.payouts ?? []).slice(0, 100),
+> 79 |     [earnings?.payouts],
+     |      ^^^^^^^^ This dependency may be modified later
+  80 |   );
+  81 |
+  82 |   const artistChartData = useMemo(                                                                                                                                                             react-hooks/preserve-manual-memoization
+
+E:\SONARA Fertig!\sonara-web\src\app\admin\fraud\page.tsx
+  11:10  warning  'toneFromSeverity' is defined but never used                                                                                                                                                                   @typescript-eslint/no-unused-vars
+  68:9   warning  The 'suspiciousUsers' logical expression could make the dependencies of useMemo Hook (at line 80) change on every render. To fix this, wrap the initialization of 'suspiciousUsers' in its own useMemo() Hook  react-hooks/exhaustive-deps
+  69:9   warning  The 'anomalyLogs' logical expression could make the dependencies of useMemo Hook (at line 86) change on every render. To fix this, wrap the initialization of 'anomalyLogs' in its own useMemo() Hook          react-hooks/exhaustive-deps
+  69:9   warning  The 'anomalyLogs' logical expression could make the dependencies of useMemo Hook (at line 102) change on every render. To fix this, wrap the initialization of 'anomalyLogs' in its own useMemo() Hook         react-hooks/exhaustive-deps
+
+E:\SONARA Fertig!\sonara-web\src\app\admin\streams\page.tsx
+  35:9  warning  The 'series' logical expression could make the dependencies of useMemo Hook (at line 44) change on every render. To fix this, wrap the initialization of 'series' in its own useMemo() Hook  react-hooks/exhaustive-deps
+  35:9  warning  The 'series' logical expression could make the dependencies of useMemo Hook (at line 53) change on every render. To fix this, wrap the initialization of 'series' in its own useMemo() Hook  react-hooks/exhaustive-deps
+
+E:\SONARA Fertig!\sonara-web\src\app\api\support-artist\route.ts
+  18:23  error  A `require()` style import is forbidden  @typescript-eslint/no-require-imports
+
+E:\SONARA Fertig!\sonara-web\src\app\artist\dashboard\page.tsx
+  26:48  error    Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 @typescript-eslint/no-explicit-any
+  35:5   error    Error: Cannot access variable before it is declared
+
+`loadArtistData` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+E:\SONARA Fertig!\sonara-web\src\app\artist\dashboard\page.tsx:35:5
+  33 |     if (loading || !user || profile?.role !== "artist") return;
+  34 |
+> 35 |     loadArtistData();
+     |     ^^^^^^^^^^^^^^ `loadArtistData` accessed before it is declared
+  36 |   }, [user, profile, loading, supabase]);
+  37 |
+  38 |   async function loadArtistData() {
+
+E:\SONARA Fertig!\sonara-web\src\app\artist\dashboard\page.tsx:38:3
+  36 |   }, [user, profile, loading, supabase]);
+  37 |
+> 38 |   async function loadArtistData() {
+     |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 39 |     setLoadingData(true);
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^
+> 40 |     setError(null);
+     …
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^
+> 91 |     }
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^
+> 92 |   }
+     | ^^^^ `loadArtistData` is declared here
+  93 |
+  94 |   if (loading) return <p className="text-sm text-zinc-400">Loading...</p>;
+  95 |  react-hooks/immutability
+  36:6   warning  React Hook useEffect has a missing dependency: 'loadArtistData'. Either include it or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        react-hooks/exhaustive-deps
+  75:45  error    Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 @typescript-eslint/no-explicit-any
+
+E:\SONARA Fertig!\sonara-web\src\app\login\page.tsx
+  103:14  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+E:\SONARA Fertig!\sonara-web\src\components\admin\line-chart.tsx
+  55:3  warning  'fillColor' is assigned a value but never used    @typescript-eslint/no-unused-vars
+  66:9  warning  'yLabelSpace' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+E:\SONARA Fertig!\sonara-web\src\components\admin\use-admin-live.ts
+  301:5   warning  React Hook useMemo has a missing dependency: 'options'. Either include it or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         react-hooks/exhaustive-deps
+  414:7   error    Error: Cannot access variable before it is declared
+
+`startInternal` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+E:\SONARA Fertig!\sonara-web\src\components\admin\use-admin-live.ts:414:7
+  412 |     reconnectTimerRef.current = setTimeout(() => {
+  413 |       reconnectTimerRef.current = null;
+> 414 |       startInternal();
+      |       ^^^^^^^^^^^^^ `startInternal` accessed before it is declared
+  415 |     }, waitMs);
+  416 |   }, [clearReconnectTimer, opts.baseReconnectDelayMs, opts.maxReconnectAttempts, opts.maxReconnectDelayMs]);
+  417 |
+
+E:\SONARA Fertig!\sonara-web\src\components\admin\use-admin-live.ts:466:3
+  464 |   );
+  465 |
+> 466 |   const startInternal = useCallback(() => {
+      |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 467 |     if (manualStopRef.current) return;
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 468 |
+      …
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 520 |     scheduleReconnect,
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 521 |   ]);
+      | ^^^^^^ `startInternal` is declared here
+  522 |
+  523 |   const start = useCallback(() => {
+  524 |     manualStopRef.current = false;  react-hooks/immutability
+  416:6   warning  React Hook useCallback has a missing dependency: 'startInternal'. Either include it or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               react-hooks/exhaustive-deps
+  466:37  error    Compilation Skipped: Existing memoization could not be preserved
+
+React Compiler has skipped optimizing this component because the existing manual memoization could not be preserved. This value was memoized in source but not in compilation output.
+
+E:\SONARA Fertig!\sonara-web\src\components\admin\use-admin-live.ts:466:37
+  464 |   );
+  465 |
+> 466 |   const startInternal = useCallback(() => {
+      |                                     ^^^^^^^
+> 467 |     if (manualStopRef.current) return;
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 468 |
+      …
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 512 |     }
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 513 |   }, [
+      | ^^^^ Could not preserve existing memoization
+  514 |     attachNamedListener,
+  515 |     cleanupSource,
+  516 |     clearReconnectTimer,                                                                                                                                                                                                                                                                                                                                                                                                      react-hooks/preserve-manual-memoization
+
+E:\SONARA Fertig!\sonara-web\src\components\artist\dashboard.tsx
+   29:5   error    Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+E:\SONARA Fertig!\sonara-web\src\components\artist\dashboard.tsx:29:5
+  27 |     const totalStreams = songs.reduce((sum, song) => sum + (song.stream_count || 0), 0);
+  28 |     
+> 29 |     setStats({
+     |     ^^^^^^^^ Avoid calling setState() directly within an effect
+  30 |       totalStreams,
+  31 |       totalDonations: 0, // Would be fetched from API
+  32 |       songsUploaded: songs.length,  react-hooks/set-state-in-effect
+  100:15  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              @next/next/no-img-element
+
+E:\SONARA Fertig!\sonara-web\src\components\paypal\support-artist-button.tsx
+  71:5  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+E:\SONARA Fertig!\sonara-web\src\components\paypal\support-artist-button.tsx:71:5
+  69 |   useEffect(() => {
+  70 |     if (!open) return;
+> 71 |     setNotice(null);
+     |     ^^^^^^^^^ Avoid calling setState() directly within an effect
+  72 |     setSdkReady(false);
+  73 |     loadPayPalSdk();
+  74 |   }, [open, loadPayPalSdk]);  react-hooks/set-state-in-effect
+  84:7  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+E:\SONARA Fertig!\sonara-web\src\components\paypal\support-artist-button.tsx:84:7
+  82 |     const pp = window.paypal;
+  83 |     if (!pp) {
+> 84 |       setNotice("PayPal is unavailable.");
+     |       ^^^^^^^^^ Avoid calling setState() directly within an effect
+  85 |       return;
+  86 |     }
+  87 |                              react-hooks/set-state-in-effect
+
+E:\SONARA Fertig!\sonara-web\src\components\player\Feed.tsx
+  107:6  warning  React Hook useEffect has a missing dependency: 'loadMore'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+E:\SONARA Fertig!\sonara-web\src\hooks\usePlayer.ts
+  243:5   error    Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+E:\SONARA Fertig!\sonara-web\src\hooks\usePlayer.ts:243:5
+  241 |   useEffect(() => {
+  242 |     const next = detectNetworkStatus();
+> 243 |     setNetworkStatus(next);
+      |     ^^^^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  244 |     playerStore.getState().setNetworkStatus(next);
+  245 |
+  246 |     const onOnline = () => {  react-hooks/set-state-in-effect
+  849:23  warning  The ref value 'preloadAudioRef.current' will likely have changed by the time this effect cleanup function runs. If this ref points to a node rendered by React, copy 'preloadAudioRef.current' to a variable inside the effect, and use that variable in the cleanup function                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         react-hooks/exhaustive-deps
+
+E:\SONARA Fertig!\sonara-web\src\lib\admin\auth.ts
+  90:3  warning  '_request' is defined but never used  @typescript-eslint/no-unused-vars
+
+E:\SONARA Fertig!\sonara-web\src\lib\admin\metrics.ts
+  188:10  warning  'toDate' is defined but never used      @typescript-eslint/no-unused-vars
+  204:10  warning  'parseRange' is defined but never used  @typescript-eslint/no-unused-vars
+
+E:\SONARA Fertig!\sonara-web\src\lib\algorithms\rising-artists.ts
+  59:7  error  'songArtist' is never reassigned. Use 'const' instead  prefer-const
+
+E:\SONARA Fertig!\sonara-web\src\lib\auth\hooks.ts
+  14:11  warning  'UseAuthResult' is defined but never used  @typescript-eslint/no-unused-vars
+
+E:\SONARA Fertig!\sonara-web\src\lib\queue\queue-service.ts
+  58:12  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  76:12  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+E:\SONARA Fertig!\sonara-web\src\lib\services\feedService.ts
+  448:10  warning  'antiSpamPenalty' is defined but never used  @typescript-eslint/no-unused-vars
+
+E:\SONARA Fertig!\sonara-web\src\lib\services\growthService.ts
+  639:58  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  647:58  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  654:58  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+E:\SONARA Fertig!\sonara-web\src\lib\services\queueService.ts
+  44:23  warning  'type' is defined but never used          @typescript-eslint/no-unused-vars
+  44:37  warning  'event' is defined but never used         @typescript-eslint/no-unused-vars
+  85:9   error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  89:19  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+E:\SONARA Fertig!\sonara-web\src\lib\streaming\stream-tracker.ts
+  115:9  warning  'today' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+E:\SONARA Fertig!\sonara-web\src\lib\workers\dispatcher.ts
+   2:3   warning  'dequeueEvent' is defined but never used       @typescript-eslint/no-unused-vars
+  29:15  warning  'userId' is assigned a value but never used    @typescript-eslint/no-unused-vars
+  29:23  warning  'songId' is assigned a value but never used    @typescript-eslint/no-unused-vars
+  29:31  warning  'liked' is assigned a value but never used     @typescript-eslint/no-unused-vars
+  39:15  warning  'userId' is assigned a value but never used    @typescript-eslint/no-unused-vars
+  39:23  warning  'artistId' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  39:33  warning  'followed' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  49:15  warning  'userId' is assigned a value but never used    @typescript-eslint/no-unused-vars
+  49:23  warning  'artistId' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  49:33  warning  'amount' is assigned a value but never used    @typescript-eslint/no-unused-vars
+
+E:\SONARA Fertig!\sonara-web\src\lib\workers\earnings-processor.ts
+  130:13  error  'updateData' is never reassigned. Use 'const' instead  prefer-const
+  130:25  error  Unexpected any. Specify a different type               @typescript-eslint/no-explicit-any
+  158:27  error  Unexpected any. Specify a different type               @typescript-eslint/no-explicit-any
+  286:16  error  Unexpected any. Specify a different type               @typescript-eslint/no-explicit-any
+  287:16  error  Unexpected any. Specify a different type               @typescript-eslint/no-explicit-any
+
+E:\SONARA Fertig!\sonara-web\src\lib\workers\engagementProcessor.ts
+  148:13  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+E:\SONARA Fertig!\sonara-web\src\lib\workers\stream-processor.ts
+    5:8   warning  'crypto' is defined but never used        @typescript-eslint/no-unused-vars
+  219:61  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  234:53  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  426:5   warning  'reason' is defined but never used        @typescript-eslint/no-unused-vars
+
+E:\SONARA Fertig!\sonara-web\src\lib\workers\streamProcessor.ts
+  187:63  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+E:\SONARA Fertig!\sonara-web\src\lib\workers\trending-processor.ts
+  4:10  warning  'Decimal' is defined but never used  @typescript-eslint/no-unused-vars
+
+E:\SONARA Fertig!\sonara-web\src\lib\workers\trendingProcessor.ts
+  123:19  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  151:69  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  166:72  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+E:\SONARA Fertig!\sonara-web\src\types\events.ts
+   31:28  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   43:28  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  101:9   error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  109:12  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  144:29  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  177:29  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+✖ 75 problems (40 errors, 35 warnings)
+  2 errors and 0 warnings potentially fixable with the `--fix` option.
+

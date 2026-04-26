@@ -1,0 +1,16 @@
+name: SONARA Security Guard
+
+on:
+  pull_request:
+
+jobs:
+  guard:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - run: npm install
+
+      - name: Validate Build Safety
+        run: npm run validate

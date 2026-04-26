@@ -1,0 +1,40 @@
+name: SONARA AI Auto Fix
+
+on:
+  workflow_run:
+    workflows: ["SONARA CI"]
+    types:
+      - completed
+
+jobs:
+  ai-fix:
+    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - run: npm install
+
+      - name: Run AI Fix Engine
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: node scripts/ai-fix-engine.js
+
+      - name: Create Fix Branch
+        run: |
+          git checkout -b ai/fix-${{ github.run_id }}
+          git add .
+          git commit -m "🤖 AI auto fix applied"
+          git push origin ai/fix-${{ github.run_id }}
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          title: "🤖 SONARA AI Auto Fix"
+          branch: ai/fix-${{ github.run_id }}
+          base: main
